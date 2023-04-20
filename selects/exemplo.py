@@ -25,3 +25,11 @@ class SelectView(discord.ui.View):
     def __init__(self, *, timeout=180):
         super().__init__(timeout=timeout)
         self.add_item(SelectMenu())
+
+
+#Adicionar View ao comando usando tree de comandos:
+
+@bot.tree.command(name="nome_comando", description="descrição comando"))
+async def func_comando(interaction: discord.Interaction):
+
+    await interaction.response.send_message("Mensagem exemplo", view=SelectView())
