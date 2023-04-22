@@ -10,7 +10,6 @@ class SelectMenu(discord.ui.Select):
             discord.SelectOption(label=f"Opção 4",emoji="")
             ]
         super().__init__(placeholder=f"Placeholder do menu",max_values=1,min_values=1,options=options)
-        self.dragon = dragon
 
     async def callback_menu(self, interaction: discord.Interaction):
 
