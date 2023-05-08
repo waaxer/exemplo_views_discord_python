@@ -54,3 +54,38 @@ class ViewExemplo(discord.ui.View):
     )
     async def func_botao_1(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.edit_message(content="editada pelo botão")
+ 
+###########################  Adicionar mais de um botão ou select ou ambos juntos:  ###########################
+class SelectMenuExemplo1(discord.ui.Select):
+    def __init__(self):
+        super().__init__(
+            placeholder="What is your age?",
+            options=[
+                discord.SelectOption(label="16 - 17", value="16"),
+                discord.SelectOption(label="18 - 23", value="18"),
+                discord.SelectOption(label="24 - 30", value="24")
+            ]        
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        await interaction.response.edit_message(content="editada pelo menu")
+
+class SelectMenuExemplo2(discord.ui.Select):
+    def __init__(self):
+        super().__init__(
+            placeholder="What is your age",
+            options=[
+                discord.SelectOption(label="16 - 1", value="1"),
+                discord.SelectOption(label="18 - 2", value="2"),
+                discord.SelectOption(label="24 - 3", value="3")
+            ]        
+        )
+
+    async def callback(self, interaction: discord.Interaction):
+        await interaction.response.edit_message(content="editada pelo menu")
+
+class ViewExemplo(discord.ui.View):
+    def __init__(self, timeout=180):
+        super().__init__(timeout=timeout)
+        self.add_item(SelectMenuExemplo1())
+        self.add_item(SelectMenuExemplo2())
